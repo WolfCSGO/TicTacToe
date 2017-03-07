@@ -58,7 +58,7 @@ public class Programa {
         }
         switch (opcion) {
             case 1:
-                jugadores[playerNumber - 1] = juego.getNewPlayerHuman("Jugador " + playerNumber, playerNumber);
+                createHumanPlayer(playerNumber);
                 break;
             case 2:
                 jugadores[playerNumber - 1] = juego.getNewIAEasy("IA Easy " + playerNumber, playerNumber);
@@ -74,6 +74,23 @@ public class Programa {
     private static int leerEntero() {
         Scanner teclado = new Scanner(System.in);
         return teclado.nextInt();
+    }
+
+    private static void imprimeControles() {
+        System.out.println("Quieres invertir los controles?");
+        System.out.println("1. Si");
+        System.out.println("2. Si");
+    }
+
+    private static void createHumanPlayer(int playerNumber) {
+        imprimeControles();
+        int opcion = leerEntero();
+        while (opcion != 1 && opcion != 2) {
+            System.out.println("Escoge 1 o 2");
+            imprimeControles();
+            opcion = leerEntero();
+        }
+        jugadores[playerNumber - 1] = juego.getNewPlayerHuman("Jugador " + playerNumber, playerNumber, opcion == 1);
     }
 
     private static void askForRematch() {
