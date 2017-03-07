@@ -31,6 +31,9 @@ public abstract class Player {
     {
         this.victorias++;
     }
+    public String printTilesNumber(){
+        return "";
+    }
     public abstract String getType();
 
     public abstract int play();

@@ -29,8 +29,8 @@ public class Game {
         this.winner = null;
     }
 
-    public Player getNewPlayerHuman(String name, int id) {
-        return new PlayerHuman(name, id);
+    public Player getNewPlayerHuman(String name, int id, boolean invertirControles) {
+        return new PlayerHuman(name, id, invertirControles);
     }
 
     public Player getNewIAEasy(String name, int id) {
@@ -48,9 +48,12 @@ public class Game {
 
     public void play() {
         this.resetGame();
-        System.out.println("Estas son las coordenadas del tablero:");
-        System.out.println(this.gameBoard.getGameBoardTiles());
-        System.out.println("");
+        //System.out.println("Estas son las coordenadas del tablero:");
+        //System.out.println(this.gameBoard.getGameBoardTiles());
+        // System.out.println("");
+        for (Player j : this.players) {
+            System.out.println(j.printTilesNumber());
+        }
         Random r = new Random();
         int whosTurn = r.nextInt(2);
         while (this.gameBoard.getZeros() > 0 && !this.existsWinner()) {
