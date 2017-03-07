@@ -72,6 +72,7 @@ public class Programa {
     }
 
     private static int leerEntero() {
+        System.out.print("\nSeleccionar una opción: ");
         Scanner teclado = new Scanner(System.in);
         return teclado.nextInt();
     }
@@ -90,7 +91,7 @@ public class Programa {
     }
 
     private static void imprimeMenu() {
-        System.out.println();
+        Console.clear();
         System.out.println("1. Escoger Jugador 1: [" + jugadores[0].getType() + "]");
         System.out.println("2. Escoger Jugador 2: [" + jugadores[1].getType() + "]");
         System.out.println("3. Jugar");
@@ -99,7 +100,7 @@ public class Programa {
     }
 
     private static void imprimeMenuChoosePlayer(int playerNumber) {
-        System.out.println();
+        Console.clear();
         System.out.println("Que quieres que sea jugador " + playerNumber);
         System.out.println("1. Humano");
         System.out.println("2. IA Facil");
