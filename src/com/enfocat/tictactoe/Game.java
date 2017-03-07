@@ -47,6 +47,7 @@ public class Game {
     }
 
     public void play() {
+        Console.clear();
         this.resetGame();
         System.out.println("Estas son las coordenadas del tablero:");
         System.out.println(this.gameBoard.getGameBoardTiles());
