@@ -2,7 +2,7 @@ package com.enfocat.tictactoe;
 
 enum FICHAS {
 
-    VACIA("-"),
+    VACIA(" "),
     CRUZ("X"),
     REDONDA("O");
 
@@ -145,6 +145,29 @@ public final class GameBoard {
     @Override
     public String toString() {
         String cadena = "";
+        
+        cadena += "+---+---+---+\n";
+        for (int i = 0; i < 3; i++) {
+            cadena += "|";
+            for (int j = 0; j < 3; j++) {
+                int coordValue = this.getTileValue(i * 3 + j + 1);
+                switch (coordValue) {
+                    case 1:
+                        cadena += " " + FICHAS.CRUZ + " |";
+                        break;
+                    case 2:
+                        cadena += " " + FICHAS.REDONDA + " |";
+                        break;
+                    default:
+                        cadena += " " + FICHAS.VACIA + " |";
+                        break;
+                }
+            }
+            cadena += "\n+---+---+---+\n";
+        }
+        cadena += "\n";
+        
+        /*
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 int coordValue = this.getTileValue(i * 3 + j + 1);
@@ -162,8 +185,7 @@ public final class GameBoard {
                 cadena += " ";
             }
             cadena += "\n";
-        }
+        }*/
         return cadena;
     }
-
 }
