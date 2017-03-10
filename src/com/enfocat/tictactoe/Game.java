@@ -1,6 +1,9 @@
 package com.enfocat.tictactoe;
 
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Game {
 
@@ -55,9 +58,17 @@ public class Game {
         for (Player j : this.players) {
             System.out.println(j.printTilesNumber());
         }
+        System.out.print("Loading... Starting the game soon!");
+        try {
+              TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+        }
         Random r = new Random();
         int whosTurn = r.nextInt(2);
         while (this.gameBoard.getZeros() > 0 && !this.existsWinner()) {
+            Console.clear();
+            System.out.println(this.gameBoard.toString());
             Player current = this.players[whosTurn];
             System.out.println("> Es el turno de " + current.getName());
             int jugada = current.play();
@@ -66,13 +77,13 @@ public class Game {
                 jugada = current.play();
             }
             this.gameBoard.setGameBoard(jugada, current.getId());
-            System.out.println();
-            System.out.println(this.gameBoard.toString());
             if (this.gameBoard.checkPlayerWins(current.getId())) {
                 this.setWinner(current);
             }
             whosTurn = (whosTurn + 1) % 2;
         }
+        Console.clear();
+        System.out.println(this.gameBoard.toString());
         if (!this.existsWinner()) {
             System.out.println("> Ha sido un empate.");
         } else {

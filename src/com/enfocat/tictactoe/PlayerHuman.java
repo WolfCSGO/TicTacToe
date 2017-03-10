@@ -19,11 +19,11 @@ public class PlayerHuman extends Player {
 
     @Override
     public int play() {
-        System.out.println("Introduce una coordenada:");
+        System.out.print("Introduce una coordenada: ");
         Scanner teclado = new Scanner(System.in);
         int entrada = teclado.nextInt();
         while (!this.isCoordValid(entrada)) {
-            System.out.println("Error! Introduce una coordenada entre el 1 y el 9:");
+            System.out.print("Error! Introduce una coordenada entre el 1 y el 9: ");
             entrada = teclado.nextInt();
         }
         if (this.reverse) {
