@@ -72,7 +72,7 @@ public class Game {
             Player current = this.players[whosTurn];
             System.out.println("> Es el turno de " + current.getName());
             int jugada = current.play();
-            while (!this.gameBoard.isTileValid(jugada)) {
+            while (!this.gameBoard.isTileValid(jugada) || !this.gameBoard.isTileFree(jugada)) {
                 System.out.println("Introduce una casilla vacia!");
                 jugada = current.play();
             }
